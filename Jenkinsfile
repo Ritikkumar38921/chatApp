@@ -84,7 +84,7 @@ pipeline {
 
         stage('Deploy to Kubernetes') {
             steps {
-                withEnv(["KUBECONFIG=C:\Users\RITIK\.kube\config"]) {
+                withEnv(["KUBECONFIG=C:\\Users\\RITIK\\.kube\\config"]) {
                     script {
                        sh 'kubectl config use-context minikube'
 
