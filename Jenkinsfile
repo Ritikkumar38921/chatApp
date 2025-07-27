@@ -84,16 +84,15 @@ pipeline {
 
         stage('Deploy to Kubernetes') {
             steps {
-                withEnv(["KUBECONFIG=C:\\Users\\RITIK\\.kube\\config"]) {
-                    script {
-                       sh 'kubectl config use-context minikube'
+               withEnv(["KUBECONFIG=C:\\Users\\RITIK\\.kube\\config"]) {
+                script {
+                        sh 'kubectl config use-context minikube'
 
-                       bat """
-                            helm upgrade --install chatapp ./chatapp-chart `
-                                --set backend.image=ritikumar38921/chatapp-frontend:${DOCKER_IMAGE_TAG} `
-                                --set frontend.image=${DOCKER_IMAGE_TAG}
+                        bat """
+                            helm upgrade --install chatapp ./chatapp-chart ^
+                                --set backend.image=%DOCKER_FRONT_END_IMAGE_NAME%:%DOCKER_IMAGE_TAG% ^
+                                --set frontend.image=%DOCKER_BACKEND_END_IMAGE_NAME%:%DOCKER_IMAGE_TAG%
                         """
-                        
                     }
                 }
             }
