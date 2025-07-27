@@ -34,7 +34,7 @@ pipeline {
                             docker_build(
                                 imageName: env.DOCKER_FRONT_END_IMAGE_NAME,
                                 imageTag: env.DOCKER_IMAGE_TAG,
-                                dockerfile: 'Dockerfile',
+                                dockerfile: './frontend/Dockerfile',
                                 context: "./frontend"
                             )
                         }
@@ -46,7 +46,7 @@ pipeline {
                             docker_build(
                                 imageName: env.DOCKER_BACKEND_END_IMAGE_NAME,
                                 imageTag: env.DOCKER_IMAGE_TAG,
-                                dockerfile: 'Dockerfile',
+                                dockerfile: './backend/Dockerfile',
                                 context: "./backend"
                             )
                         }
