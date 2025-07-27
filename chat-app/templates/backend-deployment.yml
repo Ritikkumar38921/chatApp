@@ -24,7 +24,7 @@ spec:
         - name: NODE_ENV
           value: {{ .Values.backend.NODE_ENV }}
         - name: PORT
-          value: {{ .Values.backend.PORT }}
+          value: "5001"
         - name: MONGODB_URI
           value: {{ .Values.backend.MONGODB_URI }}
         - name: JWT_SECRET
