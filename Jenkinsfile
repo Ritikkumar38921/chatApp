@@ -5,7 +5,7 @@ pipeline {
     environment{
         DOCKER_FRONT_END_IMAGE_NAME = "ritikumar38921/chatapp-frontend",
         DOCKER_BACKEND_END_IMAGE_NAME = "ritikumar38921/chatapp-backend",
-        DOCKER_IMAGE_TAG = ${BUILD_NUMBER},
+        DOCKER_IMAGE_TAG = ${BUILD_NUMBER}
     }
 
     stages {
