@@ -63,27 +63,27 @@ pipeline {
             }
         }
 
-        stage('Push Docker Images') {
-            parallel{
-                stage("Pushing frontend Docker image to docker hub"){
-                    script : {
-                        docker_push(
-                            imageName: env.DOCKER_FRONT_END_IMAGE_NAME,
-                            imageTag: env.imageTag,
-                            credentials: "docker-hub-credentials",
-                        )
-                    }
-                }
-                stage("Pushing backend Docker image to docker hub"){
-                    script : {
-                        docker_push(
-                            imageName: env.DOCKER_BACKEND_END_IMAGE_NAME,
-                            imageTag: env.imageTag,
-                            credentials: "docker-hub-credentials",
-                        )
-                    }
-                }
-            }
-        }
+        // stage('Push Docker Images') {
+        //     parallel{
+        //         stage("Pushing frontend Docker image to docker hub"){
+        //             script : {
+        //                 docker_push(
+        //                     imageName: env.DOCKER_FRONT_END_IMAGE_NAME,
+        //                     imageTag: env.imageTag,
+        //                     credentials: "docker-hub-credentials",
+        //                 )
+        //             }
+        //         }
+        //         stage("Pushing backend Docker image to docker hub"){
+        //             script : {
+        //                 docker_push(
+        //                     imageName: env.DOCKER_BACKEND_END_IMAGE_NAME,
+        //                     imageTag: env.imageTag,
+        //                     credentials: "docker-hub-credentials",
+        //                 )
+        //             }
+        //         }
+            // }
+        // }
     }
 }
