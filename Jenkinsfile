@@ -107,7 +107,7 @@ pipeline {
                         echo "Frontend Pod: \$FRONTEND_POD"
 
                         kubectl port-forward pod/\$BACKEND_POD -n chat-app 5001:5001 &
-                        kubectl port-forward pod/\$FRONTEND_POD -n chat-app 80:80 &
+                        kubectl port-forward pod/\$FRONTEND_POD -n chat-app 6000:80 &
                     """
                 }
             }
