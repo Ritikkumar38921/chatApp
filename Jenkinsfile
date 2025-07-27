@@ -89,7 +89,7 @@ pipeline {
                         sh 'kubectl config use-context minikube'
 
                         bat """
-                            helm update chatapp ./chat-app
+                            helm upgrade --install chatapp ./chat-app
                         """
                     }
                 }
