@@ -25,11 +25,11 @@ spec:
             name: mongo-data
         env:
         - name: MONGO_INITDB_ROOT_USERNAME
-          value: {{ Values.mongodb.MONGO_INITDB_ROOT_USERNAME }}
+          value: {{ .Values.mongodb.MONGO_INITDB_ROOT_USERNAME }}
         - name: MONGO_INITDB_ROOT_PASSWORD
-          value: {{ Values.mongodb.MONGO_INITDB_ROOT_PASSWORD }}
+          value: {{ .Values.mongodb.MONGO_INITDB_ROOT_PASSWORD }}
         - name: MONGO_INITDB_DATABASE
-          value: {{ Values.mongodb.MONGO_INITDB_DATABASE }}
+          value: {{ .Values.mongodb.MONGO_INITDB_DATABASE }}
       volumes:
        - name: mongo-data
          persistentVolumeClaim:
