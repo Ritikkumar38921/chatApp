@@ -68,17 +68,17 @@ pipeline {
                         }
                     }
                 }
-                // stage("Pushing backend Docker image to docker hub"){
-                //     steps{
-                //         script {
-                //             docker_push(
-                //                 imageName: env.DOCKER_BACKEND_END_IMAGE_NAME,
-                //                 imageTag: env.imageTag,
-                //                 credentials: "docker-hub-credentials",
-                //             )
-                //         }
-                //     }
-                // }
+                stage("Pushing backend Docker image to docker hub"){
+                    steps{
+                        script {
+                            docker_push(
+                                imageName: env.DOCKER_BACKEND_END_IMAGE_NAME,
+                                imageTag: env.imageTag,
+                                credentials: "docker-hub-credentials",
+                            )
+                        }
+                    }
+                }
             }
         }
     }
