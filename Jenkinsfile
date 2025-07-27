@@ -17,6 +17,17 @@ pipeline {
             }
         }
 
+        stage('Install Trivy') {
+            steps {
+                sh '''
+                wget https://github.com/aquasecurity/trivy/releases/latest/download/trivy_0.51.1_Linux-64bit.tar.gz
+                tar zxvf trivy_0.51.1_Linux-64bit.tar.gz
+                sudo mv trivy /usr/local/bin/
+                trivy --version
+                '''
+            }
+        }
+
 
         stage('Git: Code Checkout') {
             steps {
