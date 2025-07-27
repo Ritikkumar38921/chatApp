@@ -90,8 +90,8 @@ pipeline {
 
                         bat """
                             helm upgrade --install chatapp ./chat-app ^
-                                --set backend.image=%DOCKER_FRONT_END_IMAGE_NAME%:%DOCKER_IMAGE_TAG% ^
-                                --set frontend.image=%DOCKER_BACKEND_END_IMAGE_NAME%:%DOCKER_IMAGE_TAG%
+                                --set backend.image=%DOCKER_BACKEND_END_IMAGE_NAME%:%DOCKER_IMAGE_TAG% ^
+                                --set frontend.image=%DOCKER_FRONTEND_END_IMAGE_NAME%:%DOCKER_IMAGE_TAG%
                         """
                     }
                 }
