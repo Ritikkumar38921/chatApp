@@ -17,17 +17,6 @@ pipeline {
             }
         }
 
-        stage('Install Trivy') {
-            steps {
-                sh '''
-               curl -L -o trivy.tar.gz https://github.com/aquasecurity/trivy/releases/latest/download/trivy_0.51.1_Linux-64bit.tar.gz
-                tar -xzf trivy.tar.gz
-                sudo mv trivy /usr/local/bin/
-                trivy --version
-                '''
-            }
-        }
-
 
         stage('Git: Code Checkout') {
             steps {
@@ -66,35 +55,27 @@ pipeline {
             }  
         }
 
-        stage('Security Scan with Trivy') {
-            steps {
-                script {
-                    trivy_scan()     
+        stage('Push Docker Images') {
+            parallel{
+                stage("Pushing frontend Docker image to docker hub"){
+                    script : {
+                        docker_push(
+                            imageName: env.DOCKER_FRONT_END_IMAGE_NAME,
+                            imageTag: env.imageTag,
+                            credentials: "docker-hub-credentials",
+                        )
+                    }
+                }
+                stage("Pushing backend Docker image to docker hub"){
+                    script : {
+                        docker_push(
+                            imageName: env.DOCKER_BACKEND_END_IMAGE_NAME,
+                            imageTag: env.imageTag,
+                            credentials: "docker-hub-credentials",
+                        )
+                    }
                 }
             }
         }
-
-        // stage('Push Docker Images') {
-        //     parallel{
-        //         stage("Pushing frontend Docker image to docker hub"){
-        //             script : {
-        //                 docker_push(
-        //                     imageName: env.DOCKER_FRONT_END_IMAGE_NAME,
-        //                     imageTag: env.imageTag,
-        //                     credentials: "docker-hub-credentials",
-        //                 )
-        //             }
-        //         }
-        //         stage("Pushing backend Docker image to docker hub"){
-        //             script : {
-        //                 docker_push(
-        //                     imageName: env.DOCKER_BACKEND_END_IMAGE_NAME,
-        //                     imageTag: env.imageTag,
-        //                     credentials: "docker-hub-credentials",
-        //                 )
-        //             }
-        //         }
-            // }
-        // }
     }
 }
