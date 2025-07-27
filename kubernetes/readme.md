@@ -21,3 +21,6 @@ Kubernetes :
  
  -> kubectl port-forward pods/backendpodname -n chat-app 5001:5001
  -> kubectl port-forward pods/frontendpodname -n chat-app 80:80
+
+
+these are not used here just for reading purposes. all file come from chat-app helm .
