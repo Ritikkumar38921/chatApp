@@ -38,10 +38,11 @@ services:
     networks:
       - chat-network
 
+
 networks:
   chat-network:
     driver: bridge
-    
+
 
 volumes:
   mongodb_data:
