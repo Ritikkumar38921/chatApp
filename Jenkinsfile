@@ -58,8 +58,8 @@ pipeline {
         stage('Push Docker Images') {
             parallel{
                 stage("Pushing frontend Docker image to docker hub"){
-                    steps:{
-                        script : {
+                    steps{
+                        script {
                             docker_push(
                                 imageName: env.DOCKER_FRONT_END_IMAGE_NAME,
                                 imageTag: env.imageTag,
@@ -70,7 +70,7 @@ pipeline {
                 }
                 stage("Pushing backend Docker image to docker hub"){
                     steps{
-                        script : {
+                        script {
                             docker_push(
                                 imageName: env.DOCKER_BACKEND_END_IMAGE_NAME,
                                 imageTag: env.imageTag,
